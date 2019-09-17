@@ -1,29 +1,26 @@
-import React, { Component, } from 'react';
+import React, { Component } from 'react';
+import List from './List';
+import TodoForm from './TodoForm';
 
 class App extends Component {
-  state = {
+  state = { 
     todos: [
-      { id: 1, name: "Learn Rails", complete: true, },
-      { id: 2, name: "Learn React", complete: false, },
-      { id: 3, name: "Graduate DPL", complete: false, },
+      { id: 1, name: 'Learn Rails', complete: true },
+      { id: 2, name: 'Learn React', complete: false },
+      { id: 3, name: 'Learn Redux', complete: false },
     ]
-  };
-
-renderTodos = () => {
-  const { todos, } = this.state;
-  return todos.map( todo => 
-    <li key={todo.id}>{todo.name}</li>
-  )
-};
+  }
 
   render() {
+    const { todos } = this.state;
+ 
     return (
       <div>
-        <ul>
-          { this.renderTodos() }
-        </ul>
+        <TodoForm />
+        <List name="Todo List" items={todos} />
+
       </div>
-    )
+    );
   }
 }
 
